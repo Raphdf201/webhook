@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.2.20"
 kotlinx-html = "0.12.0"
-kotlin-css = "2025.6.4"
+kotlin-css = "2025.9.9"
 ktor = "3.3.0"
 logback = "1.5.18"
 
