@@ -13,6 +13,7 @@ application {
 dependencies {
     implementation(libs.ktor.server.html.builder)
     implementation(libs.kotlinx.html)
+    implementation(libs.kotlinx.serialization.protobuf)
     implementation(libs.ktor.server.core)
     implementation(libs.kotlin.css)
     implementation(libs.ktor.server.call.logging)
