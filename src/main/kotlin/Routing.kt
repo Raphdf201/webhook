@@ -21,6 +21,7 @@ import kotlinx.html.p
 import kotlinx.html.script
 import kotlinx.html.title
 import kotlinx.html.ul
+import java.lang.Exception
 
 fun Application.configureRouting() {
     routing {
@@ -33,8 +34,8 @@ fun Application.configureRouting() {
                 body {
                     h1("Hello")
                     ul {
-                        li { a("/status", "Services") }
-                        li { a("/deploy", "Deployments") }
+                        li { a("/status") { +"Services" } }
+                        li { a("/deploy") { +"Deployments" } }
                     }
                     script(src = "https://assets.raphdf201.net/dark.js") {}
                 }
@@ -61,8 +62,11 @@ fun Application.configureRouting() {
         }
 
         get("/deploy") {
-            var amnt: Int = call.queryParameters["amount"].toString().toInt()
-            if (amnt == 0) amnt = 10
+            val amnt: Int = try {
+                call.queryParameters["amount"].toString().toInt()
+            } catch (e: Exception) {
+                10
+            }
             call.respondHtml {
                 body {
                     ul {
@@ -82,6 +86,7 @@ fun Application.configureRouting() {
                 call.respond(HttpStatusCode.BadRequest)
                 return@get
             }
+            recentDeploys.addLast(proj)
             Runtime.getRuntime().exec(arrayOf("systemctl", "start", "deploy@$proj"))
         }
     }
