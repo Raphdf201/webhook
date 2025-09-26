@@ -6,9 +6,11 @@ val projects = listOf(
     "chat",
     "webhook"
 )
-val statuses = projects.toMutableList().addAll(listOf(
-    "ssh"
-))
+val others = listOf(
+    "ssh",
+    "nginx"
+)
+val statuses = projects.toMutableList()
 val recentDeploys: MutableList<String> = emptyList<String>().toMutableList()
 
 fun trimList(list: MutableList<String>, maxLength: Int): List<String> {

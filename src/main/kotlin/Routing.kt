@@ -51,9 +51,9 @@ fun Application.configureRouting() {
                 body {
                     h1 { +"Status" }
                     ul {
-                        projects.forEach { proj ->
-                            h2 { +proj }
-                            p { +getStatus(proj) }
+                        statuses.forEach {
+                            h2 { +it }
+                            p { +getStatus(it) }
                         }
                     }
                     script(src = "https://assets.raphdf201.net/dark.js") {}
